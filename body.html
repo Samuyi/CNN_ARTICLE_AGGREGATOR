@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cnn News aggregator</title>
+<meta charset="utf-8" http-equiv="Content-Type" content="text/html"/>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.2.1/dt-1.10.16/b-1.4.2/datatables.min.css"
+/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.2.1/dt-1.10.16/b-1.4.2/datatables.min.js"></script>
+
+</head>
+<body>
+    <div>
+        <table id="fancy" class="display">
+            <thead>
+                <td>Category</td>
+                <td>Links</td>
+            </thead>
+            <tbody>
+                {{ range $key, $value := . }}
+                <tr>
+                    <td>{{ $key }}</td>
+                    <td>
+                     {{ range $value }}
+                     <a href={{.}}>
+                      <li>{{ . }}</li>
+                     </a>
+                     {{end}}
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+        $("#fancy").DataTable()
+    })
+ </script>
+</html>
